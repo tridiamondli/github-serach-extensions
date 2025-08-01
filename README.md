@@ -6,9 +6,8 @@
 
 **一个功能强大的Chrome浏览器扩展，让GitHub搜索变得简单而高效**
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/your-username/github-search-extension)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/tridiamondli/github-serach-extensions)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-Available-red.svg)](#安装)
 [![Language](https://img.shields.io/badge/Language-中文%20/%20English-yellow.svg)](#语言支持)
 
 </div>
@@ -54,7 +53,6 @@ GitHub高级搜索助手是一款专为开发者打造的Chrome扩展，提供�
 
 1. **打开搜索助手**
    - 点击浏览器工具栏中的扩展图标
-   - 或使用快捷键 `Ctrl+Shift+F` (Windows) / `Cmd+Shift+F` (Mac)
 
 2. **输入搜索条件**
    - 在搜索框中输入关键词
@@ -62,8 +60,7 @@ GitHub高级搜索助手是一款专为开发者打造的Chrome扩展，提供�
    - 实时预览生成的搜索查询
 
 3. **执行搜索**
-   - 点击"搜索"按钮或按回车键
-   - 在新标签页中查看GitHub搜索结果
+   - 点击"搜索"按钮
 
 ### 📋 实用搜索示例
 
