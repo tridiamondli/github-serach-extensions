@@ -1,0 +1,57 @@
+{
+  "manifest_version": 3,
+  "name": "GitHub Advanced Search Helper",
+  "name__zh_CN": "GitHub 高级搜索助手",
+  "version": "1.0.0",
+  "description": "Enhanced GitHub search with advanced filters and bilingual support",
+  "description__zh_CN": "增强版GitHub搜索工具，支持高级筛选和中英双语",
+  
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  
+  "host_permissions": [
+    "https://github.com/*"
+  ],
+  
+  "default_locale": "zh_CN",
+  
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "GitHub Search Helper",
+    "default_icon": {
+      "16": "assets/icons/icon16.png",
+      "32": "assets/icons/icon32.png",
+      "48": "assets/icons/icon48.png",
+      "128": "assets/icons/icon128.png"
+    }
+  },
+  
+  "background": {
+    "service_worker": "background/background.js"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["content/content.js"],
+      "css": ["content/content.css"],
+      "run_at": "document_end"
+    }
+  ],
+  
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "32": "assets/icons/icon32.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+  
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*"],
+      "matches": ["https://github.com/*"]
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub高级搜索助手</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <div class="title">
+                <img src="../assets/icons/icon32.png" alt="Icon" class="logo">
+                <h1 id="title">GitHub 高级搜索助手</h1>
+            </div>
+            <div class="controls">
+                <button id="langToggle" class="btn-icon" title="切换语言">🌐</button>
+            </div>
+        </header>
+
+        <!-- 主要搜索区域 -->
+        <main class="main-content">
+            <!-- 关键词输入 -->
+            <section class="search-section">
+                <label for="keyword" id="keywordLabel">🔍 搜索关键词</label>
+                <input type="text" id="keyword" placeholder="输入搜索关键词...">
+            </section>
+
+            <!-- 搜索范围 -->
+            <section class="filter-section">
+                <h3 id="scopeTitle">📊 搜索范围</h3>
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="inName" value="name">
+                        <span id="inNameLabel">项目名称</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="inDescription" value="description">
+                        <span id="inDescriptionLabel">项目描述</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="inReadme" value="readme">
+                        <span id="inReadmeLabel">README文件</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="inFile" value="file">
+                        <span id="inFileLabel">文件内容</span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- 数量筛选 -->
+            <section class="filter-section">
+                <h3 id="metricsTitle">⭐ 数量筛选</h3>
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <label id="starsLabel">Stars:</label>
+                        <div class="range-inputs">
+                            <input type="number" id="starsMin" placeholder="最小值" min="0">
+                            <span>到</span>
+                            <input type="number" id="starsMax" placeholder="最大值" min="0">
+                        </div>
+                    </div>
+                    <div class="metric-item">
+                        <label id="forksLabel">Forks:</label>
+                        <div class="range-inputs">
+                            <input type="number" id="forksMin" placeholder="最小值" min="0">
+                            <span>到</span>
+                            <input type="number" id="forksMax" placeholder="最大值" min="0">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 时间筛选 -->
+            <section class="filter-section">
+                <h3 id="timeTitle">📅 时间筛选</h3>
+                <div class="time-filters">
+                    <div class="time-item">
+                        <label id="createdLabel">创建时间:</label>
+                        <div class="range-inputs">
+                            <input type="date" id="createdStart" placeholder="开始日期">
+                            <span>到</span>
+                            <input type="date" id="createdEnd" placeholder="结束日期">
+                        </div>
+                    </div>
+                    <div class="time-item">
+                        <label id="pushedLabel">更新时间:</label>
+                        <div class="range-inputs">
+                            <input type="date" id="pushedStart" placeholder="开始日期">
+                            <span>到</span>
+                            <input type="date" id="pushedEnd" placeholder="结束日期">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 技术栈筛选 -->
+            <section class="filter-section">
+                <h3 id="techTitle">💻 技术栈</h3>
+                <div class="tech-filters">
+                    <div class="tech-item">
+                        <label id="languageLabel">编程语言:</label>
+                        <select id="language">
+                            <option value="">所有语言</option>
+                            <option value="JavaScript">JavaScript</option>
+                            <option value="TypeScript">TypeScript</option>
+                            <option value="Python">Python</option>
+                            <option value="Java">Java</option>
+                            <option value="C++">C++</option>
+                            <option value="C">C</option>
+                            <option value="C#">C#</option>
+                            <option value="Go">Go</option>
+                            <option value="Rust">Rust</option>
+                            <option value="PHP">PHP</option>
+                            <option value="Ruby">Ruby</option>
+                            <option value="Swift">Swift</option>
+                            <option value="Kotlin">Kotlin</option>
+                            <option value="Dart">Dart</option>
+                            <option value="HTML">HTML</option>
+                            <option value="CSS">CSS</option>
+                            <option value="Vue">Vue</option>
+                            <option value="React">React</option>
+                        </select>
+                    </div>
+                    <div class="tech-item">
+                        <label id="licenseLabel">许可证:</label>
+                        <select id="license">
+                            <option value="">所有许可证</option>
+                            <option value="mit">MIT</option>
+                            <option value="apache-2.0">Apache-2.0</option>
+                            <option value="gpl-3.0">GPL-3.0</option>
+                            <option value="bsd-3-clause">BSD-3-Clause</option>
+                            <option value="bsd-2-clause">BSD-2-Clause</option>
+                            <option value="lgpl-3.0">LGPL-3.0</option>
+                            <option value="unlicense">Unlicense</option>
+                        </select>
+                    </div>
+                    <div class="tech-item">
+                        <label id="extensionLabel">文件扩展名:</label>
+                        <input type="text" id="extension" placeholder="如: js, py, md">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 其他筛选 -->
+            <section class="filter-section">
+                <h3 id="otherTitle">🌍 其他选项</h3>
+                <div class="other-filters">
+                    <div class="other-item">
+                        <label id="locationLabel">地区:</label>
+                        <input type="text" id="location" placeholder="如: china, usa">
+                    </div>
+                    <div class="other-item">
+                        <label id="userLabel">用户:</label>
+                        <input type="text" id="user" placeholder="GitHub用户名">
+                    </div>
+                    <div class="other-item">
+                        <label id="orgLabel">组织:</label>
+                        <input type="text" id="org" placeholder="GitHub组织名">
+                    </div>
+                    <div class="other-item">
+                        <label id="filenameLabel">文件名:</label>
+                        <input type="text" id="filename" placeholder="如: package.json">
+                    </div>
+                    <div class="other-item">
+                        <label id="pathLabel">路径:</label>
+                        <input type="text" id="path" placeholder="如: src/, docs/">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 特殊搜索 -->
+            <section class="filter-section">
+                <h3 id="specialTitle">✨ 特殊搜索</h3>
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="awesome">
+                        <span id="awesomeLabel">Awesome项目</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="trending">
+                        <span id="trendingLabel">热门项目 (Stars > 1000)</span>
+                    </label>
+                </div>
+            </section>
+        </main>
+
+        <!-- 底部操作按钮 -->
+        <footer class="footer">
+            <div class="button-group">
+                <button id="searchBtn" class="btn-primary">
+                    🔍 <span id="searchBtnText">搜索</span>
+                </button>
+                <button id="clearBtn" class="btn-secondary">
+                    🗑️ <span id="clearBtnText">清空</span>
+                </button>
+                <button id="helpBtn" class="btn-link">
+                    ❓ <span id="helpBtnText">帮助</span>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../utils/i18n.js"></script>
+    <script src="../utils/storage.js"></script>
+    <script src="../utils/search.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>
